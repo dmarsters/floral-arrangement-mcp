@@ -1,0 +1,41 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "floral-arrangement-mcp"
+version = "1.0.0"
+description = "MCP server for floral arrangement prompt enhancement and ComfyUI workflow generation"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    {name = "Dal Marsters", email = "dal@lushy.ai"}
+]
+dependencies = [
+    "mcp>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+]
+
+[project.scripts]
+floral-arrangement-mcp = "floral_arrangement_mcp.server:main"
+
+[tool.black]
+line-length = 100
+target-version = ['py310']
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+asyncio_mode = "auto"
